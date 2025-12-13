@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #691b96;
+}
+.header{
+    background-color: #691b96;
+
+}
+
+.store-container {
+    display: flex;
+    gap: 20px;
+}
+
+.items-column, .cart-column {
+    max-width: 40%; 
+    width: 90%;      
+    margin: 0 auto;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+/* Стилі для Лічильника */
+.counter-wrapper {
+    display: flex;
+    gap: 18px;
+    margin-top: 10px;
+    width: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.items_control {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    user-select: none; /* Запобігає виділенню тексту */
+}
+
+.items_current {
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+.btn-add{
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    border-color: #007bff;
+}
+.product-image{
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 4px;
+}

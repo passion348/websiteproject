@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySite</title>   
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Мій Інтернет-Магазин</h1>
+    </header>
+
+    <main class="store-container">
+        
+        <div class="items-column">
+            <h2> КАРТОЧКИ ТОВАРІВ</h2>
+            
+            <div class="product-card" data-id="1">
+                <img src="images/lego.png" alt="Фото товару Лего" class="product-image">
+                <h3 data-product-name>Лего</h3>
+                <p>Ціна: <span data-price>1250</span> грн</p>
+
+                <div class="items counter-wrapper">
+                    <div class="items_control" data-action="minus">-</div>
+                    <div class="items_current" data-counter>1</div>
+                    <div class="items_control" data-action="plus">+</div>
+                </div>
+
+                <button data-action="add-to-cart" class="btn-add">
+                    Додати в кошик
+                </button>
+            </div>
+
+            <div class="product-card" data-id="2">
+                <img src="images/kykla.png" alt="Фото товару Кукла" class="product-image">
+                <h3 data-product-name>Кукла</h3>
+                <p>Ціна: <span data-price>2220</span> грн</p>
+
+                <div class="items counter-wrapper">
+                    <div class="items_control" data-action="minus">-</div>
+                    <div class="items_current" data-counter>1</div>
+                    <div class="items_control" data-action="plus">+</div>
+                </div>
+
+                <button data-action="add-to-cart" class="btn-add">
+                    Додати в кошик
+                </button>
+            </div>
+
+            <div class="product-card" data-id="3">
+                <img src="images/car.png" alt="Фото товару Машинка" class="product-image">
+                <h3 data-product-name>Машинка</h3>
+                <p>Ціна: <span data-price>3250</span> грн</p>
+
+                <div class="items counter-wrapper">
+                    <div class="items_control" data-action="minus">-</div>
+                    <div class="items_current" data-counter>1</div>
+                    <div class="items_control" data-action="plus">+</div>
+                </div>
+
+                <button data-action="add-to-cart" class="btn-add">
+                    Додати в кошик
+                </button>
+            </div>
+
+        </div>
+
+        <div class="cart-column">
+            <h2>КОШИК</h2>
+            
+            <div class="cart-items">
+                <p class="cart-empty-message">Кошик порожній.</p>
+            </div>
+
+            <div class="cart-total">
+                <h4>Загальна сума: <span class="total-price">0</span> грн</h4>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
