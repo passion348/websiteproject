@@ -4,18 +4,34 @@ window.addEventListener('click', function (event) {
     
     if (event.target.dataset.action === 'plus' || event.target.dataset.action === 'minus') {
         const counterWrapper = event.target.closest('.counter-wrapper');
-        const counter = counterWrapper.querySelector('[data-counter]');
+        let counter =
+            counterWrapper.querySelector('[data-counter]') ||
+            counterWrapper.querySelector('[data-cart-counter]');
         let count = parseInt(counter.innerText);
         
-        if (event.target.dataset.action === 'plus') {
-            counter.innerText = count + 1;
-        } 
-        
-        if (event.target.dataset.action === 'minus') {
-            if (count > 1) {
-                counter.innerText = count - 1;
-            }
+        const isProductCard = event.target.closest('.product-card');
+        const isCartItem = event.target.closest('.cart-item');
+
+    if (event.target.dataset.action === 'plus') {
+        counter.innerText = count + 1;
+    }
+
+    if (event.target.dataset.action === 'minus') {
+
+        if (isCartItem && count === 1) {
+            event.target.closest('.cart-item').remove();
+            updateCartTotal();
+            return;
         }
+
+        if (isProductCard && count === 1) {
+            return;
+        }
+
+        counter.innerText = count - 1;
+    }
+
+    updateCartTotal();
     }
 
 
@@ -30,7 +46,8 @@ window.addEventListener('click', function (event) {
             id: card.dataset.id,
             name: card.querySelector('[data-product-name]').innerText,
             price: parseInt(card.querySelector('[data-price]').innerText),
-            count: parseInt(card.querySelector('[data-counter]').innerText) 
+            count: parseInt(card.querySelector('[data-counter]').innerText),
+            imgSrc: card.querySelector('img').getAttribute('src')
         };
 
         const cartItemsContainer = document.querySelector('.cart-items');
@@ -45,13 +62,17 @@ window.addEventListener('click', function (event) {
         } else {
             // Створюємо нову картку товару для кошика
             const cartItemHTML = `
-                <div class="cart-item" 
-                     data-id="${productInfo.id}" 
-                     data-cart-price="${productInfo.price}"> <p>
-                        **${productInfo.name}**
-                        <br>
-                        ${productInfo.price} грн x <span data-cart-counter>${productInfo.count}</span> шт.
-                    </p>
+                <div class="cart-item" data-id="${productInfo.id}" data-cart-price="${productInfo.price}">
+                    <img src="${productInfo.imgSrc}" alt="${productInfo.name}" width="80">
+                    <div class="cart-item-info">
+                        <h4>${productInfo.name}</h4>
+                        <p>${productInfo.price} грн x</p>
+                        <div class="items counter-wrapper">
+                            <div class="items_control" data-action="minus">-</div>
+                            <div class="items_current" data-cart-counter>${productInfo.count}</div>
+                            <div class="items_control" data-action="plus">+</div>
+                        </div>
+                    </div>
                     <hr>
                 </div>
             `;
