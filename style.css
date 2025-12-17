@@ -1,11 +1,14 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #6b1b99;
+    background-color: #932acf;
 }
 .header{
-    background-color: #691b96;
-
+    background-color: #932acf;
+    align-items: center;     
+    text-align: center;  
+    color: rgb(68, 141, 163);
+    justify-content: center;
 }
 
 .store-container {
@@ -14,21 +17,32 @@ body {
 }
 
 .items-column, .cart-column {
-    max-width: 40%; 
-    width: 90%;      
+    max-width: 80%; 
+    width: 75%;      
     margin: 0 auto;
     padding: 15px;
     background-color: rgb(255, 255, 255);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+.items-column{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
 
 .product-card {
-    border: 1px solid #ddd;
+    border: 3px solid rgb(68, 141, 163);
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
     align-items: center;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     
+    text-align: center;    
+    gap: 10px;
 }
 
 /* Стилі для Лічильника */
@@ -68,4 +82,42 @@ body {
     object-fit: cover;
     flex-shrink: 0;
     border-radius: 4px;
+}
+.counter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 19px;
+}
+
+.cart-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    justify-content: flex-end;
+    z-index: 9999;
+}
+
+.cart-popup.active {
+    display: flex;
+}
+.cart-wrapper {
+    width: 350px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+}
+.cart-btn {
+    margin-bottom: 20px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    background: rgb(68, 141, 163);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
 }
